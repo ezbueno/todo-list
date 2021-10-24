@@ -1,6 +1,7 @@
 package com.buenoezandro.todo.dto;
 
-import java.util.Date;
+import java.io.Serializable;
+import java.time.LocalDateTime;
 
 import javax.persistence.Column;
 
@@ -13,16 +14,18 @@ import lombok.ToString;
 @Setter
 @ToString
 @NoArgsConstructor
-public class TaskDTO {
-    
+public class TaskDTO implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+
     private Long id;
-    
+
     @Column(nullable = false)
     private String title;
-    
+
     @Column(nullable = false)
     private String description;
-    
+
     @Column(nullable = false)
-    private Date deadLine;
+    private LocalDateTime deadLine;
 }

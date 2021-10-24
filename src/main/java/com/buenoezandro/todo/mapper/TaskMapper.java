@@ -16,6 +16,7 @@ public interface TaskMapper {
 
     @Mapping(target = "createdAt", ignore = true)
     @Mapping(target = "updatedAt", ignore = true)
+    @Mapping(source = "deadLine", target = "deadLine")
     Task toModel(TaskDTO taskDTO);
 
     TaskDTO toDTO(Task task);

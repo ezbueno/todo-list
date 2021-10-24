@@ -1,6 +1,7 @@
 package com.buenoezandro.todo.model;
 
-import java.util.Date;
+import java.io.Serializable;
+import java.time.LocalDateTime;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -18,7 +19,9 @@ import org.hibernate.annotations.UpdateTimestamp;
 @ToString
 @Entity
 @Table(name = "tasks")
-public class Task {
+public class Task implements Serializable {
+
+    private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -31,13 +34,13 @@ public class Task {
     private String description;
 
     @Column(nullable = false)
-    private Date deadLine;
+    private LocalDateTime deadLine;
 
     @CreationTimestamp
     @Column(name = "created_at", nullable = false, updatable = false)
-    private Date createdAt;
+    private LocalDateTime createdAt;
 
     @UpdateTimestamp
     @Column(name = "updated_at")
-    private Date updatedAt;
+    private LocalDateTime updatedAt;
 }
